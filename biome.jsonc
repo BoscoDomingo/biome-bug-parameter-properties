@@ -1,0 +1,72 @@
+{
+	"$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"files": {
+		"includes": ["**/src/**/*", "!**/node_modules/**/*", "!**/dist/**/*", "!**/lib/**/*", "!**/build/**/*"]
+	},
+	"formatter": {
+		"enabled": true,
+		"formatWithErrors": false,
+		"indentStyle": "tab",
+		"indentWidth": 2,
+		"lineEnding": "lf",
+		"lineWidth": 120
+	},
+	"linter": {
+		"enabled": true,
+		"rules": {
+			"recommended": true,
+			"style": {
+				"useNamingConvention": {
+					"level": "error",
+					"options": {
+						"strictCase": false,
+						"requireAscii": true,
+						"conventions": [
+							{
+								"selector": {
+									"kind": "classProperty",
+									"modifiers": ["private", "readonly"]
+								},
+								"formats": ["CONSTANT_CASE", "camelCase"],
+								"match": "_(.+)"
+							},
+							{
+								"selector": {
+									"kind": "classProperty",
+									"modifiers": ["private"]
+								},
+								"formats": ["camelCase"],
+								"match": "_(.+)"
+							},
+							{
+								"selector": {
+									"kind": "classMember",
+									"modifiers": ["private"]
+								},
+								"match": "_(.+)"
+							}
+						]
+					}
+				}
+			},
+			"correctness": {
+				"noUnusedPrivateClassMembers": "off",
+				"noUnusedVariables": "off"
+			}
+		}
+	},
+	"javascript": {
+		"formatter": {
+			"arrowParentheses": "asNeeded",
+			"bracketSameLine": false,
+			"bracketSpacing": true,
+			"semicolons": "always",
+			"trailingCommas": "all"
+		},
+		"globals": ["_", "describe", "it", "expect", "beforeEach", "afterEach", "beforeAll", "afterAll"],
+		"parser": {
+			"unsafeParameterDecoratorsEnabled": true
+		}
+	}
+}
